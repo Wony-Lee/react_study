@@ -2,11 +2,11 @@ import "./App.css";
 import EventPractice from "./components/EventPractice";
 
 function App() {
-    return (
-        <>
-            <EventPractice />
-        </>
-    );
+  return (
+    <>
+      <EventPractice />
+    </>
+  );
 }
 
 export default App;
