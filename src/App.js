@@ -1,10 +1,10 @@
 import "./App.css";
-import EventPractice from "./components/EventPractice";
+import ValidationSample from "./components/ValidationSample";
 
 function App() {
   return (
     <>
-      <EventPractice />
+      <ValidationSample />
     </>
   );
 }
