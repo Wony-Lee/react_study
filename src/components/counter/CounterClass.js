@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
+    // state를 constructor에서 꺼내기
+    // 이렇게 하면 consturctor 메서드를 선언하지 않고도 state 초기 값을 설정할 수 있다.
     state = {
         number: 0,
         fixedNumber: 0,
@@ -14,15 +16,23 @@ class Counter extends Component {
                 <button
                     // onClick을 통해 버튼이 클릭되었을 때 호출할 함수를 지정함.
                     onClick={() => {
-                        // this.setState를 사용해서 state에 새로운 값을 넣을 수 있음.
-                        this.setState({ number: number + 1 });
+                        this.setState(
+                            {
+                                number: number + 1,
+                            },
+                            () => {
+                                console.log("state");
+                            }
+                        );
                     }}
                 >
                     +
                 </button>
                 <button
                     onClick={() => {
-                        this.setState({ number: number - 1 });
+                        this.setState((prevState) => ({
+                            number: prevState.number - 1,
+                        }));
                     }}
                 >
                     -
