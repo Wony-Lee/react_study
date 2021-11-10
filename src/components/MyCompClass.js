@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class MyCompClass extends Component {
+    static defaultProps = {
+        name: "기본 이름",
+    };
+    static propTypes = {
+        name: PropTypes.string,
+        favoriteNumber: PropTypes.number.isRequired,
+    };
     render() {
         const { name, favoriteNumber, children } = this.props;
         return (
@@ -13,14 +20,5 @@ class MyCompClass extends Component {
         );
     }
 }
-
-MyCompClass.defaultProps = {
-    name: "Class Comp",
-};
-
-MyCompClass.propTypes = {
-    name: PropTypes.string,
-    favoriteNumber: PropTypes.number.isRequired,
-};
 
 export default MyCompClass;
