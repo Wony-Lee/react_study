@@ -2,6 +2,7 @@ import "./App.css";
 import LifeCycleSample from "./components/LifeCycleSample";
 
 import React, { Component } from "react";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 // function App() {
 //   return (
@@ -30,7 +31,9 @@ class App extends Component {
       <>
         <div>
           <button onClick={this.handleClick}>랜덤 생삭</button>
-          <LifeCycleSample color={this.state.color} />
+          <ErrorBoundary>
+            <LifeCycleSample color={this.state.color} />
+          </ErrorBoundary>
         </div>
       </>
     );
