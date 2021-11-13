@@ -10,6 +10,7 @@ const getAverage = (numbers) => {
 const Average = () => {
   const [list, setList] = useState([]);
   const [number, setNumber] = useState("");
+  const inputEl = useRef(null);
 
   const onChange = useCallback((e) => {
     setNumber(e.target.value);
@@ -19,12 +20,14 @@ const Average = () => {
     const nextList = list.concat(parseInt(number));
     setList(nextList);
     setNumber("");
+    inputEl.current.focus();
   }, [number, list]); // number, list가 변경 되었을 때만 함수생성.
   const avg = useMemo(() => getAverage(list), [list]);
+
   return (
     <>
       <div>
-        <input value={number} onChange={onChange} />
+        <input value={number} onChange={onChange} ref={inputEl} />
         <button onClick={onInsert}>등록</button>
       </div>
       <div>
