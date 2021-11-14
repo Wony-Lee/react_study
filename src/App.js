@@ -13,56 +13,32 @@ function createBulkTodos() {
       checked: false,
     });
   }
+  return array;
 }
 
 const App = () => {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      text: "자고 일어나면 씻기",
-      checked: true,
-    },
-    {
-      id: 2,
-      text: "밥먹기",
-      checked: true,
-    },
-    {
-      id: 3,
-      text: "공부하기",
+  const [todos, setTodos] = useState(createBulkTodos);
+  const nextId = useRef(2501);
+  const onInsert = useCallback((text) => {
+    const todo = {
+      id: nextId.current,
+      text,
       checked: false,
-    },
-  ]);
-  const nextId = useRef(4);
-  const onInsert = useCallback(
-    (text) => {
-      const todo = {
-        id: nextId.current,
-        text,
-        checked: false,
-      };
-      setTodos(todos.concat(todo));
-      nextId.current += 1; // nextId 1씩 증가
-    },
-    [todos]
-  );
-  const onRemove = useCallback(
-    (id) => {
-      setTodos(todos.filter((item) => item.id !== id));
-    },
-    [todos]
-  );
+    };
+    setTodos((todos) => todos.concat(todo));
+    nextId.current += 1; // nextId 1씩 증가
+  }, []);
+  const onRemove = useCallback((id) => {
+    setTodos((todos) => todos.filter((item) => item.id !== id));
+  }, []);
 
-  const onToggle = useCallback(
-    (id) => {
-      setTodos(
-        todos.map((item) =>
-          item.id === id ? { ...item, checked: !item.checked } : item
-        )
-      );
-    },
-    [todos]
-  );
+  const onToggle = useCallback((id) => {
+    setTodos((todos) =>
+      todos.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  }, []);
 
   return (
     <>
