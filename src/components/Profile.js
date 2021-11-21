@@ -14,6 +14,7 @@ const data = {
 
 const Profile = () => {
     const { username } = useParams();
+    console.log("=>", username);
     const profile = data[username];
     if (!profile) {
         return <div>존재하지 않는 사용자</div>;
