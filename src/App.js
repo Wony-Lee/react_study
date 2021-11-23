@@ -1,22 +1,27 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import About from "./components/About";
-import AppLayout from "./components/AppLayout";
-import Profiles from "./components/Profiles";
+import React, { useState } from "react";
+import axios from "axios";
 
 const App = () => {
-    return (
-        <>
-            <AppLayout></AppLayout>
-
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route index path="about" element={<About />} />
-                <Route path="profiles/*" element={<Profiles />}></Route>
-            </Routes>
-        </>
-    );
+  const [data, setData] = useState(null);
+  const onClick = () => {
+    axios.get("https://jsonplaceholder.typicode.com/todos/1").then((res) => {
+      setData(res.data);
+    });
+  };
+  return (
+    <>
+      <div>
+        <button onClick={onClick}>불러오기</button>
+      </div>
+      {data && (
+        <textarea
+          rows={7}
+          value={JSON.stringify(data, null, 2)}
+          readOnly={true}
+        />
+      )}
+    </>
+  );
 };
 
 export default App;
