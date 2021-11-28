@@ -1,15 +1,15 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import NewsPage from "./pages/NewsPages";
+import ColorBox from "./componentns/ColorBox";
+import { ColorProvider } from "./contexts/Context";
 const App = () => {
     return (
-        <>
-            <Routes>
-                <Route path="/*" element={<NewsPage />}>
-                    <Route path=":category" element={<NewsPage />} />
-                </Route>
-            </Routes>
-        </>
+        <ColorProvider>
+            <>
+                <div>
+                    <ColorBox />
+                </div>
+            </>
+        </ColorProvider>
     );
 };
 
