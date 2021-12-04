@@ -1,15 +1,13 @@
 import React from "react";
-import ColorBox from "./componentns/ColorBox";
-import SelectColors from "./componentns/SelectColors";
-import { ColorProvider } from "./contexts/Context";
+import Counter from "./components/Counter";
+import Todos from "./components/Todos";
 const App = () => {
     return (
-        <ColorProvider>
-            <div>
-                <SelectColors />
-                <ColorBox />
-            </div>
-        </ColorProvider>
+        <div>
+            <Counter number={0} />
+            <hr />
+            <Todos />
+        </div>
     );
 };
 
